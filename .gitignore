@@ -7,3 +7,7 @@ __pycache__/
 .env
 .env.*
 .DS_Store
+.venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/

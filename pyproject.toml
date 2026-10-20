@@ -1,0 +1,52 @@
+[project]
+name = "mesh-governance"
+version = "0.2.0"
+description = "SQLite evidence governance: immutable revisions, independent review and controlled publication."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Paulo Villalobos" }]
+requires-python = ">=3.10"
+dependencies = []
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Database",
+    "Typing :: Typed",
+]
+
+[project.urls]
+Repository = "https://github.com/imperiobaal69-web/mesh-governance"
+
+[dependency-groups]
+dev = [
+    "mypy>=1.13",
+    "pytest>=8.3",
+    "ruff>=0.8",
+]
+
+[build-system]
+requires = ["uv_build>=0.8,<0.14"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+# B023: fails() invokes each lambda immediately, so late binding of loop variables is safe.
+# RUF001: the source text fixture is deliberately non-ASCII.
+"tests/*" = ["B023", "RUF001"]
+
+[tool.mypy]
+strict = true
+python_version = "3.10"
+files = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-p no:cacheprovider"

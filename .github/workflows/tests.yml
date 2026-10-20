@@ -13,6 +13,7 @@ jobs:
   governance:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         python-version: ["3.10", "3.12"]
     steps:
@@ -22,5 +23,18 @@ jobs:
       - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Run governance acceptance tests
+      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install locked dev dependencies
+        run: uv sync --locked
+      - name: Lint
+        run: uv run ruff check src tests
+      - name: Check formatting
+        run: uv run ruff format --check src tests
+      - name: Type-check
+        run: uv run mypy --strict
+      - name: Run acceptance tests
+        run: uv run pytest -v
+      - name: Run acceptance tests with the standard library only
         run: PYTHONPATH=src python -B -m unittest discover -s tests -v
