@@ -3,23 +3,76 @@
   "source_commit": "8a24e488959e91c7a634338e9fe3c7cb384d1218",
   "extracted_on": "2026-09-30",
   "initial_public_commit": "15fc916fef4be91dd16059466a3749aaa585f0e7",
-  "files": [
+  "extracted_files": [
     {
       "path": "scripts/mesh_ontology.py",
       "source_sha256": "ea2f32535e2677e3996fdd0f57f15ea77824cff6b7d4068b603d52cb4cc6c8db",
-      "sha256": "600e810435f3d7a753bcdd22e24e4e1a7a012929110371e43e244ed25498a39a"
+      "last_public_sha256": "600e810435f3d7a753bcdd22e24e4e1a7a012929110371e43e244ed25498a39a",
+      "last_public_commit": "2b2d0cdb18dbfd6a4365fb82d9c301cfaa6eb725"
     },
     {
       "path": "scripts/test_mesh_ontology.py",
       "source_sha256": "bb7f22e2f03fdcd71247b42a48a64a3183fe264a5bd6671f236c9c45e6753177",
-      "sha256": "64a78120905f8ddf005b211526058c5748599a4704f59a252e99954101ab89ea"
+      "last_public_sha256": "64a78120905f8ddf005b211526058c5748599a4704f59a252e99954101ab89ea",
+      "last_public_commit": "2b2d0cdb18dbfd6a4365fb82d9c301cfaa6eb725"
+    }
+  ],
+  "files": [
+    {
+      "path": "src/mesh_governance/__init__.py",
+      "derived_from": "scripts/mesh_ontology.py",
+      "sha256": "e34f85680b8e498c1744ebcdd7d63c7051254eeae901f44f174abd6da5ae9033"
+    },
+    {
+      "path": "src/mesh_governance/actions.py",
+      "derived_from": "scripts/mesh_ontology.py",
+      "sha256": "4cd0a8d9addac4c47ab3ddac87400b1b52e6eebe1ae66acffaf2bec3dba2fb9d"
+    },
+    {
+      "path": "src/mesh_governance/encoding.py",
+      "derived_from": "scripts/mesh_ontology.py",
+      "sha256": "040b7466512bf9f64e6f27ef41c2562692f7071d0826b7aaf5a633379c92b434"
+    },
+    {
+      "path": "src/mesh_governance/errors.py",
+      "derived_from": "scripts/mesh_ontology.py",
+      "sha256": "2fbaa34bd8b127a8078084fb53f71e0a627777c838940ddf23b990a76fcf4729"
+    },
+    {
+      "path": "src/mesh_governance/principal.py",
+      "derived_from": "scripts/mesh_ontology.py",
+      "sha256": "71a6e6f179aaac3202bd75fd146565aa4cdc1f17d1c79f065a0b2cce7b67ab75"
+    },
+    {
+      "path": "src/mesh_governance/schema.py",
+      "derived_from": "scripts/mesh_ontology.py",
+      "sha256": "94331d96e33f2e94550eb0ad701446fe89078e0b51021de9e80cafa982bcf6a6"
+    },
+    {
+      "path": "src/mesh_governance/store.py",
+      "derived_from": "scripts/mesh_ontology.py",
+      "sha256": "39ecb3363f4e79ac06c48c7d81a1afeb66753e633c3de20ec33ecec2e326d411"
+    },
+    {
+      "path": "src/mesh_governance/validation.py",
+      "derived_from": "scripts/mesh_ontology.py",
+      "sha256": "02421580771bdf63ceae4fa8047264f895ced086be6e5d829ca2df42cd725883"
+    },
+    {
+      "path": "tests/test_mesh_ontology.py",
+      "derived_from": "scripts/test_mesh_ontology.py",
+      "sha256": "80e6923b2074d77844d4db42d29d689300961f0726d847506646c084e61e13dc"
     }
   ],
   "public_changes": [
     {
       "date": "2026-09-30",
       "summary": "Validate taxonomy before database writes, transactionally install configuration and guards, and close failed initializers. Enforce explicit UTC for query instants. Add three regression tests; the suite now contains 42 tests."
+    },
+    {
+      "date": "2026-10-20",
+      "summary": "Readability refactor with no behaviour change. scripts/mesh_ontology.py was split into the typed src/mesh_governance package (encoding, errors, principal, actions, schema, validation, store), checked with mypy --strict. Action handlers were renamed to snake_case and are dispatched through an explicit table keyed by the public action names; aliases resolve as before. Public classes and methods gained docstrings, and the code is formatted and linted with ruff at line length 100. The test file moved to tests/test_mesh_ontology.py with only its import line changed and formatting applied; it still contains the same 42 tests and assertions. Public method names and signatures are unchanged; the import path is now mesh_governance. Before publishing, a one-off differential replay (not included in the repository) ran the test suite and 400 randomized request scenarios against the previous module and the new package on Python 3.10 and 3.12: all 21,563 recorded store calls returned identical results or raised identical errors. Added pyproject.toml (uv, Python >=3.10, no runtime dependencies), uv.lock, an MIT license, and CI steps for ruff, mypy and pytest alongside the standard-library unittest run."
     }
   ],
-  "notes": "The initial public commit preserved the selected source files byte-for-byte. Current files include the public changes listed above; source_sha256 records the original extraction and sha256 records the current file. This standalone extract excludes the original Git history, datasets, databases, credentials, model weights and deployment configuration."
+  "notes": "The initial public commit preserved the selected source files byte-for-byte. extracted_files records each original file: source_sha256 is its hash at extraction and last_public_sha256 its hash at last_public_commit, before the refactor split it. files lists the current code files, each with the extracted file it derives from and its current sha256. This standalone extract excludes the original Git history, datasets, databases, credentials, model weights and deployment configuration."
 }
