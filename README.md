@@ -71,11 +71,11 @@ tests/
 
 ## Start reading here
 
-- **[`MeshStore.execute`](src/mesh_governance/store.py):** transactions, idempotency and the explicit action-handler table. Its docstring explains why the write lock is taken up front and why keys are bound to request fingerprints.
-- **[`MeshStore.validate`](src/mesh_governance/store.py) and [`validation.py`](src/mesh_governance/validation.py):** evidence and time checks. The review, publication and rollback handlers in `store.py` implement governance.
-- **[`schema.py`](src/mesh_governance/schema.py):** which tables are append-only history and which are current-state pointers.
-- **[Acceptance tests](tests/test_mesh_ontology.py):** `StoreTests.setUp` and its helpers show a source moving through the command interface. Tests cover concurrent reviews, role injection, stale evidence, disputed decisions, temporal corrections and rollback.
-- **[Provenance](PROVENANCE.json):** source commit, original extraction hashes and current file hashes, with subsequent public changes recorded.
+- [`MeshStore.execute`](src/mesh_governance/store.py): transactions, idempotency and the explicit action-handler table. Its docstring explains why the write lock is taken up front and why keys are bound to request fingerprints.
+- [`MeshStore.validate`](src/mesh_governance/store.py) and [`validation.py`](src/mesh_governance/validation.py): evidence and time checks. The review, publication and rollback handlers in `store.py` implement governance.
+- [`schema.py`](src/mesh_governance/schema.py): which tables are append-only history and which are current-state pointers.
+- [Acceptance tests](tests/test_mesh_ontology.py): `StoreTests.setUp` and its helpers show a source moving through the command interface. Tests cover concurrent reviews, role injection, stale evidence, disputed decisions, temporal corrections and rollback.
+- [Provenance](PROVENANCE.json): source commit, original extraction hashes and current file hashes, with subsequent public changes recorded.
 
 ## Changes since extraction
 
@@ -100,11 +100,9 @@ The sample runs without a model. It does not include the full Nexus interface, r
 
 ## Project context
 
-**Paulo Villalobos — Software Developer | Systems Design & AI**
-
-My work on Nexus / Mesh covers system design, architectural and implementation decisions, and evaluation. Development uses AI coding assistance. This extract demonstrates the system's evidence, revision and review rules through runnable code and tests.
-
-[GitHub profile](https://github.com/imperiobaal69-web)
+This is the governance core of Nexus / Mesh, a larger research tool I built. I
+pulled it out on its own so the evidence, revision and review rules can be read
+and run without the rest of the system.
 
 ## License
 
