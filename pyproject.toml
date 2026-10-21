@@ -17,7 +17,7 @@ classifiers = [
 ]
 
 [project.urls]
-Repository = "https://github.com/imperiobaal69-web/mesh-governance"
+Repository = "https://github.com/paulovillalobos/mesh-governance"
 
 [dependency-groups]
 dev = [

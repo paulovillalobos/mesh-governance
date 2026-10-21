@@ -1,6 +1,6 @@
 # Mesh Governance
 
-[![Tests](https://github.com/imperiobaal69-web/mesh-governance/actions/workflows/tests.yml/badge.svg)](https://github.com/imperiobaal69-web/mesh-governance/actions/workflows/tests.yml)
+[![Tests](https://github.com/paulovillalobos/mesh-governance/actions/workflows/tests.yml/badge.svg)](https://github.com/paulovillalobos/mesh-governance/actions/workflows/tests.yml)
 
 A Python + SQLite evidence-governance library extracted from **Nexus / Mesh**. It preserves source versions and assertion history, records independent reviews, and controls which revisions can enter a published snapshot.
 
@@ -13,7 +13,7 @@ Requires Python 3.10+ with SQLite support. The library has no runtime dependenci
 With [uv](https://docs.astral.sh/uv/), which installs the pinned dev tools from `uv.lock`:
 
 ```sh
-git clone https://github.com/imperiobaal69-web/mesh-governance.git
+git clone https://github.com/paulovillalobos/mesh-governance.git
 cd mesh-governance
 uv sync
 uv run pytest -v
